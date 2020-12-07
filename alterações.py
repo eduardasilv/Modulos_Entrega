@@ -204,4 +204,4 @@ def time(e):
     return e[0]
 
 def addE(c,e):
-    return [x for x in c in time(x)<time(e)] + [e] + [x for x in c in time(x)>time(e)]
+    return [x for x in c if time(x)<time(e)] + [e] + [x for x in c if time(x)>time(e)]
