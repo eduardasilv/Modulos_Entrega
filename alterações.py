@@ -1,15 +1,7 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-"""
-Created on Mon Dec  7 11:27:08 2020
-
-@author: mariaclaramenezes
-"""
-from random import random
+import random
 from math import log
 from math import sqrt
 from math import inf
-from random import uniform
 
 ##GRAFOS
 # g=[[1,2,3,4],[[1,2],[1,3],[2,3],[3,2],[2,4],[3,4]]]
@@ -166,9 +158,9 @@ def cincoprox(ind1,sopa):
             
 ### EVENTOS:: concatenação,deslocação, cisão ("con", "des", "cis")
 
-def con(ind1,ind2,sopa): 
+def con(ind1,sopa): 
     #ind 2 é um aleatorio dos "cincoprox (ind1,sopa)" 
-    
+    ind2=random.choice(cincoprox(ind1,sopa))
     ind3=novoind()
     ind3[0]=caminho(ind1)[:-1]+caminho(ind2)
     ind3[1]=[(posicao(ind1)[0]+posicao(ind2)[0])/2 , (posicao(ind1)[1]+posicao(ind2)[1])/2 , (posicao(ind1)[2]+posicao(ind2)[2])/2 ]
@@ -183,13 +175,13 @@ def des(ind):
     
     c=size(ind)
     
-    novox=float("{:.8f}".format(uniform(x-(1/c), x+(1/c))))
-    novoy=float("{:.8f}".format(uniform(y-(1/c), y+(1/c))))
-    novoz=float("{:.8f}".format(uniform(z-(1/c), z+(1/c))))
+    novox=float("{:.8f}".format(random.uniform(x-(1/c), x+(1/c))))
+    novoy=float("{:.8f}".format(random.uniform(y-(1/c), y+(1/c))))
+    novoz=float("{:.8f}".format(random.uniform(z-(1/c), z+(1/c))))
     while novox>1 or novox<0 or novoy>1 or novoy<0 or novoz>1 or novoz<0:
-        novox=float("{:.8f}".format(uniform(x-(1/c), x+(1/c))))
-        novoy=float("{:.8f}".format(uniform(y-(1/c), y+(1/c))))
-        novoz=float("{:.8f}".format(uniform(z-(1/c), z+(1/c))))            
+        novox=float("{:.8f}".format(random.uniform(x-(1/c), x+(1/c))))
+        novoy=float("{:.8f}".format(random.uniform(y-(1/c), y+(1/c))))
+        novoz=float("{:.8f}".format(random.uniform(z-(1/c), z+(1/c))))            
     ind = [caminho(ind), [novox,novoy,novoz], ID(ind)]
     return ind
     
