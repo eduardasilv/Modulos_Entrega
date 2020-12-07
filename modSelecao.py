@@ -22,3 +22,9 @@ def hamilton(ind,g,o,d):
         return True
     else:
         return False
+def final(sopa,g,o,d):
+    r=[]
+    for individuo in sopa:
+        if hamilton(individuo,g,o,d):
+            r+=[[caminho(individuo)]]
+    return r
