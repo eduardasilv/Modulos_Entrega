@@ -1,32 +1,40 @@
+#SOPA
+import random
+from math import log
+from math import sqrt
+from math import inf
+import ModGrafos as gr
+import ModInd as i
+
 def exprandom(m):
     x=random()
     return -m*log(x)
 
 
-##TEMOS DE MUDAR PARA RANDOM UNIFORM
 def posInicial(g,k): #equivale as condicoes da sopa inicialmente
-    r= copias(g,k)
+    r = gr.copias(g,k)
     sopa=[]
-    listapos=[]
+
     for copia in r:
-        [caminho,pos,ID]=copia
-        pos= [float("{:.8f}".format(random())), float("{:.8f}".format(random())), float("{:.8f}".format(random()))]
-        while pos in listapos:
-            pos= [float("{:.8f}".format(random())), float("{:.8f}".format(random())), float("{:.8f}".format(random()))]
-        sopa += [[caminho,pos,ID]]
-        listapos += [pos]
+        a=i.novoind()
+        a=i.novocaminho(a,i.caminho(copia))
+        a=i.novoID(a,i.ID(copia))
+        pos=[float("{:.8f}".format(random.uniform(0,1))), float("{:.8f}".format(random.uniform(0,1))), float("{:.8f}".format(random.uniform(0,1)))]
+        a=i.novapos(a,pos)
+        sopa=sopa+[a]
+
     return sopa
 
 def conjposicoes(sopa): #lista de todas as coordenadas utilizadas ate agora
     c=[]
     for individuo in sopa:
-        c=c+[posicao(individuo)]
+        c=c+[i.posicao(individuo)]
     return c
 
 def conjIDS(sopa):
     r=[]
     for individuo in sopa:
-        r=r+[ID(individuo)]
+        r=r+[i.ID(individuo)]
     return r
 
 def nID(sopa):
@@ -37,18 +45,18 @@ def addS(ind,sopa):
     return sopa
 
 def removeS(ind,sopa):
-    [x for x in sopa if x!=ind]
+    return [x for x in sopa if x!=ind]
     
 def distancia(ind1,ind2):
-    [x1,y1,z1] = posicao(ind1)
-    [x2,y2,z2] = posicao(ind2)
+    [x1,y1,z1] = i.posicao(ind1)
+    [x2,y2,z2] = i.posicao(ind2)
     distancia =sqrt(((x1-x2)**2)+((y1-y2)**2)+((z1-z2)**2))   
     return distancia
 
 def listacomp(ind,sopa):
     listac=[]
     for individuo in sopa:
-        if last(ind) == first(individuo) and (ind1 != individuo):
+        if i.last(ind) == i.first(individuo) and (ind != individuo):
             listac+=[individuo]
     return listac
      
@@ -63,8 +71,9 @@ def maisprox(ind1,sopa):
 
 def cincoprox(ind1,sopa):
     cinco=[]
-    falta=listacomp(indd1,sopa)
+    falta=listacomp(ind1,sopa)
     while len(cinco)<5 and falta!=[]:
         cinco=cinco + [maisprox(ind1,falta)]
         falta.remove(maisprox(ind1,falta))
-    return cinco 
+    return cinco     
+            
