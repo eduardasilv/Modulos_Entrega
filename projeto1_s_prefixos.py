@@ -1,3 +1,6 @@
+#ESSA VERSAO NAO TEM OS PREFIXOS DE MODULOS NAS FUNCOES QUE USAM FUNCOES DE OUTROS MODULOS
+
+
 import random
 from math import log
 from math import sqrt
@@ -18,8 +21,8 @@ def copias(g,k): #cada elemento de "copias" é um individuo inicial
     r=[]
     for x in arestas(g):
         r+=[x]*k
-    for i in range(len(r)):
-        r[i]= [r[i],[], i+1]
+    for j in range(len(r)):
+        r[j]= [r[j],[], j+1]
     return r
 
 def numnos(g):
