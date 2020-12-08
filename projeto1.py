@@ -57,25 +57,6 @@ def first(ind):
 def last(ind):
     return caminho(ind)[-1]
 
-def od(ind,o,d):
-    if first(ind)!=o or last(ind)!=d:
-        return False
-    else:
-        return True
-    
-def length(ind,g):
-    if size(ind)!=numnos(g):
-        return False
-    else:
-        return True
-    
-def todos(ind,g):
-    ok=True 
-    for x in nos(g):
-        if x not in caminho(ind):
-            ok=False
-    return ok
-
 
 #SOPA
 
@@ -129,7 +110,7 @@ def distancia(ind1,ind2):
 def listacomp(ind,sopa):
     listac=[]
     for individuo in sopa:
-        if last(ind) == first(individuo) and (ind1 != individuo):
+        if last(ind) == first(individuo) and (ind != individuo):
             listac+=[individuo]
     return listac
      
@@ -144,7 +125,7 @@ def maisprox(ind1,sopa):
 
 def cincoprox(ind1,sopa):
     cinco=[]
-    falta=listacomp(indd1,sopa)
+    falta=listacomp(ind1,sopa)
     while len(cinco)<5 and falta!=[]:
         cinco=cinco + [maisprox(ind1,falta)]
         falta.remove(maisprox(ind1,falta))
@@ -182,8 +163,25 @@ def des(ind):
         
         
 
-#sopa = lista de todos os individuos na solução da simulação
+#SELEÇÃO
+def od(ind,o,d):
+    if first(ind)!=o or last(ind)!=d:
+        return False
+    else:
+        return True
     
+def length(ind,g):
+    if size(ind)!=numnos(g):
+        return False
+    else:
+        return True
+    
+def todos(ind,g):
+    ok=True 
+    for x in nos(g):
+        if x not in caminho(ind):
+            ok=False
+    return ok   
 
 def hamilton(ind,g,o,d):
     if od(ind,o,d) and length(ind,g) and todos(ind,g):
