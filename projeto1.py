@@ -157,21 +157,25 @@ def con(ind1,sopa):
     return ind3
 
 def des(ind):
-    
+
     x=posicao(ind)[0]
     y=posicao(ind)[1]
     z=posicao(ind)[2]
     
     c=size(ind)
+    print(1/c)
     
-    novox=float("{:.8f}".format(random.uniform(x-(1/c), x+(1/c))))
+    novox=float("{:.8f}".format(random.uniform(x-(1/c), x+(1/c)))) 
     novoy=float("{:.8f}".format(random.uniform(y-(1/c), y+(1/c))))
     novoz=float("{:.8f}".format(random.uniform(z-(1/c), z+(1/c))))
-    while novox>1 or novox<0 or novoy>1 or novoy<0 or novoz>1 or novoz<0:
+    while novox>1 or novox<0:
         novox=float("{:.8f}".format(random.uniform(x-(1/c), x+(1/c))))
+    while novoy>1 or novoy<0 :
         novoy=float("{:.8f}".format(random.uniform(y-(1/c), y+(1/c))))
-        novoz=float("{:.8f}".format(random.uniform(z-(1/c), z+(1/c))))            
-    ind = [caminho(ind), [novox,novoy,novoz], ID(ind)]
+    while novoz>1 or novoz<0:
+        novoz=float("{:.8f}".format(random.uniform(z-(1/c), z+(1/c))))
+    pos=[novox,novoy,novoz]        
+    ind=novapos(ind,pos)
     return ind
     
         
