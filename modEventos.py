@@ -8,6 +8,7 @@ def con(ind1,sopa):
     
     sopa.remove(ind1)
     sopa.remove(ind2)
+    sopa.append(ind3)
     
     
     return ind3
