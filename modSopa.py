@@ -31,6 +31,13 @@ def conjIDS(sopa):
 
 def nID(sopa):
     return conjIDS(sopa)[-1]+1
+
+def addS(ind,sopa):
+    sopa+=[ind]
+    return sopa
+
+def removeS(ind,sopa):
+    [x for x in sopa if x!=ind]
     
 def distancia(ind1,ind2):
     [x1,y1,z1] = posicao(ind1)
@@ -38,24 +45,17 @@ def distancia(ind1,ind2):
     distancia =sqrt(((x1-x2)**2)+((y1-y2)**2)+((z1-z2)**2))   
     return distancia
 
-def compativeis(ind1,ind2):
-    if last(ind1) == first(ind2):
-        r=True
-    else:
-        r=False
-    return r  
-
-def listacomp(sopa,ind):
+def listacomp(ind,sopa):
     listac=[]
     for individuo in sopa:
-        if last(ind) == first(individuo):
+        if last(ind) == first(individuo) and (ind1 != individuo):
             listac+=[individuo]
     return listac
      
 def maisprox(ind1,sopa):
     d=+inf
     m=[]
-    for individuo in listacomp(sopa,ind1):
+    for individuo in listacomp(ind1,sopa):
           if distancia(ind1,individuo)<=d:
               d=distancia(ind1,individuo)
               m=individuo
@@ -63,8 +63,8 @@ def maisprox(ind1,sopa):
 
 def cincoprox(ind1,sopa):
     cinco=[]
-    falta=listacomp(sopa,ind1)
+    falta=listacomp(indd1,sopa)
     while len(cinco)<5 and falta!=[]:
         cinco=cinco + [maisprox(ind1,falta)]
         falta.remove(maisprox(ind1,falta))
-    return cinco     
+    return cinco 
