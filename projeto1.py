@@ -149,7 +149,6 @@ def con(ind1,sopa):
     #ind 2 é um aleatorio dos "cincoprox (ind1,sopa)" 
     ind2=random.choice(cincoprox(ind1,sopa))
     
-    print("ind2=",ind2)
     ind3=novoind()
     ind3=novocaminho(ind3,caminho(ind1)[:-1]+caminho(ind2))
     ind3=novapos(ind3,[(posicao(ind1)[0]+posicao(ind2)[0])/2 , (posicao(ind1)[1]+posicao(ind2)[1])/2 , (posicao(ind1)[2]+posicao(ind2)[2])/2 ])
@@ -163,7 +162,6 @@ def des(ind):
     z=posicao(ind)[2]
     
     c=size(ind)
-    print(1/c)
     
     novox=float("{:.8f}".format(random.uniform(x-(1/c), x+(1/c)))) 
     novoy=float("{:.8f}".format(random.uniform(y-(1/c), y+(1/c))))
