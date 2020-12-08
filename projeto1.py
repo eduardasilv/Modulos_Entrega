@@ -34,7 +34,7 @@ def numnos(g):
 #    comprimento de individuo = len(individuo[0])
 
 def ind(caminho, pos,ID):
-    return [caminho, pos,ID]
+    return [caminho, pos, ID]
 
 def caminho(ind):
     return ind[0] # = len(caminho(ind))
@@ -51,6 +51,18 @@ def size(ind):
 def novoind():
     return[[],[],[]]
 
+def novocaminho(ind,caminho):
+    ind[0]=caminho
+    return ind
+
+def novapos(ind,pos):
+    ind[1]=pos
+    return ind
+
+def novoID(ind,ID):
+    ind[2]=ID
+    return ind
+
 def first(ind):
     return caminho(ind)[0]
 
@@ -65,18 +77,18 @@ def exprandom(m):
     return -m*log(x)
 
 
-##TEMOS DE MUDAR PARA RANDOM UNIFORM
 def posInicial(g,k): #equivale as condicoes da sopa inicialmente
-    r= copias(g,k)
+    r = copias(g,k)
     sopa=[]
-    listapos=[]
-    for copia in r:
-        [caminho,pos,ID]=copia
-        pos= [float("{:.8f}".format(random())), float("{:.8f}".format(random())), float("{:.8f}".format(random()))]
-        while pos in listapos:
-            pos= [float("{:.8f}".format(random())), float("{:.8f}".format(random())), float("{:.8f}".format(random()))]
-        sopa += [[caminho,pos,ID]]
-        listapos += [pos]
+
+    for ind in r:
+        a=novoind()
+        a=novocaminho(a,caminho(ind))
+        a=novoID(a,ID(ind))
+        pos=[float("{:.8f}".format(random.uniform(0,1))), float("{:.8f}".format(random.uniform(0,1))), float("{:.8f}".format(random.uniform(0,1)))]
+        a=novapos(a,pos)
+        sopa=sopa+[a]
+
     return sopa
 
 def conjposicoes(sopa): #lista de todas as coordenadas utilizadas ate agora
@@ -99,7 +111,7 @@ def addS(ind,sopa):
     return sopa
 
 def removeS(ind,sopa):
-    [x for x in sopa if x!=ind]
+    return [x for x in sopa if x!=ind]
     
 def distancia(ind1,ind2):
     [x1,y1,z1] = posicao(ind1)
@@ -136,10 +148,12 @@ def cincoprox(ind1,sopa):
 def con(ind1,sopa): 
     #ind 2 é um aleatorio dos "cincoprox (ind1,sopa)" 
     ind2=random.choice(cincoprox(ind1,sopa))
+    
+    print("ind2=",ind2)
     ind3=novoind()
-    ind3[0]=caminho(ind1)[:-1]+caminho(ind2)
-    ind3[1]=[(posicao(ind1)[0]+posicao(ind2)[0])/2 , (posicao(ind1)[1]+posicao(ind2)[1])/2 , (posicao(ind1)[2]+posicao(ind2)[2])/2 ]
-    ind3[2]=nID(sopa) 
+    ind3=novocaminho(ind3,caminho(ind1)[:-1]+caminho(ind2))
+    ind3=novapos(ind3,[(posicao(ind1)[0]+posicao(ind2)[0])/2 , (posicao(ind1)[1]+posicao(ind2)[1])/2 , (posicao(ind1)[2]+posicao(ind2)[2])/2 ])
+    ind3=novoID(ind3,nID(sopa))
     return ind3
 
 def des(ind):
