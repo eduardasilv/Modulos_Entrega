@@ -218,7 +218,7 @@ def addE(c,e):
     return [x for x in c if time(x)<time(e)] + [e] + [x for x in c if time(x)>time(e)]
 
 def removeE(c,e):
-    return [x for x in cap if x!=e]
+    return [x for x in c if x!=e]
 
 def nextE(c):       # current event no simulador
     if len(c)>0:
