@@ -5,6 +5,11 @@ def con(ind1,sopa):
     ind3[0]=caminho(ind1)[:-1]+caminho(ind2)
     ind3[1]=[(posicao(ind1)[0]+posicao(ind2)[0])/2 , (posicao(ind1)[1]+posicao(ind2)[1])/2 , (posicao(ind1)[2]+posicao(ind2)[2])/2 ]
     ind3[2]=nID(sopa) 
+    
+    sopa.remove(ind1)
+    sopa.remove(ind2)
+    
+    
     return ind3
 
 def des(ind):
