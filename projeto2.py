@@ -1,3 +1,9 @@
+import random
+import ModInd as i
+import ModSopa as sp
+import ModEvent as ev
+import ModGrafo as gr
+
 def sim(g,o,d,k,limite,tbc,tbd,tbz):
  
     sopa = posInicial(g,k)
