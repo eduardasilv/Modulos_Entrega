@@ -16,8 +16,14 @@ def sim(g,o,d,k,limite,tbc,tbd,tbz):
     while ct <= limite:
 
         if ck == "con":
+            for individuo in sopa:
+                if ID(individuo)==cid:
+                    ind1=individuo
             "Modulo concatenacao"
-            c=addE(c,event(ct+random(tbc),"con",cid))
+            sopa = removeS(ind1,sopa)
+            sopa = removeS(ind2,sopa)
+            c = addE(c,event(ct+exprandom(tbc),"con",ID(ind3)))
+            c = addE(c,event(ct+exprandom(tbd),"des",ID(ind3)))
 
         elif ck == "des":
             "Modulo deslocamento"
