@@ -3,9 +3,7 @@ import random
 import ModInd as i
 import ModSopa as sp
 
-def con(ind1,sopa): 
-    #ind 2 é um aleatorio dos "cincoprox (ind1,sopa)" 
-    ind2=random.choice(sp.cincoprox(ind1,sopa))
+def con(ind1,ind2,sopa): 
     
     ind3=i.novoind()
     ind3=i.novocaminho(ind3,i.caminho(ind1)[:-1]+i.caminho(ind2))
