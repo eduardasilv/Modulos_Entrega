@@ -1,3 +1,5 @@
+
+
 # ESSA VERSAO TEM OS PREFIXOS DOS MODULOS NAS FUNCOES QUE VAO BUSCAR FUNCOES DEFINIDAS NOUTROS MODULOS
 
 
@@ -7,6 +9,8 @@ from math import sqrt
 from math import inf
 import ModGrafos as gr
 import ModInd as i
+import ModSopa as sp
+
 
 
 
@@ -32,7 +36,6 @@ def copias(g,k): #cada elemento de "copias" é um individuo inicial
 
 def numnos(g):
     return len(nos(g))
-
 
 
 
@@ -166,7 +169,8 @@ def cincoprox(ind1,sopa):
     while len(cinco)<5 and falta!=[]:
         cinco=cinco + [maisprox(ind1,falta)]
         falta.remove(maisprox(ind1,falta))
-    return cinco     
+    return cinco    
+    
 
 
 
@@ -209,7 +213,8 @@ def nextE(c):       # current event no simulador
 def delE(cap):     # elimina da cap o current event no fim do ciclo
     if len(cap)>0:
         return cap[1:]
-    else:print("Erro de delE! A cap está vazia")
+    else:
+        print("Erro de delE! A cap está vazia")
  
         
  
@@ -226,21 +231,21 @@ def delE(cap):     # elimina da cap o current event no fim do ciclo
 
 def con(ind1,sopa): 
     #ind 2 é um aleatorio dos "cincoprox (ind1,sopa)" 
-    ind2=random.choice(cincoprox(ind1,sopa))
+    ind2=random.choice(sp.cincoprox(ind1,sopa))
     
-    ind3=novoind()
-    ind3=novocaminho(ind3,caminho(ind1)[:-1]+caminho(ind2))
-    ind3=novapos(ind3,[(posicao(ind1)[0]+posicao(ind2)[0])/2 , (posicao(ind1)[1]+posicao(ind2)[1])/2 , (posicao(ind1)[2]+posicao(ind2)[2])/2 ])
-    ind3=novoID(ind3,nID(sopa))
+    ind3=i.novoind()
+    ind3=i.novocaminho(ind3,i.caminho(ind1)[:-1]+i.caminho(ind2))
+    ind3=i.novapos(ind3,[(i.posicao(ind1)[0]+i.posicao(ind2)[0])/2 , (i.posicao(ind1)[1]+i.posicao(ind2)[1])/2 , (i.posicao(ind1)[2]+i.posicao(ind2)[2])/2 ])
+    ind3=i.novoID(ind3,i.nID(sopa))
     return ind3
 
 def des(ind):
 
-    x=posicao(ind)[0]
-    y=posicao(ind)[1]
-    z=posicao(ind)[2]
+    x=i.posicao(ind)[0]
+    y=i.posicao(ind)[1]
+    z=i.posicao(ind)[2]
     
-    c=size(ind)
+    c=i.size(ind)
     
     novox=float("{:.8f}".format(random.uniform(x-(1/c), x+(1/c)))) 
     novoy=float("{:.8f}".format(random.uniform(y-(1/c), y+(1/c))))
@@ -252,9 +257,33 @@ def des(ind):
     while novoz>1 or novoz<0:
         novoz=float("{:.8f}".format(random.uniform(z-(1/c), z+(1/c))))
     pos=[novox,novoy,novoz]        
-    ind=novapos(ind,pos)
+    ind=i.novapos(ind,pos)
     return ind
+
+def cisao(sopa,g):
     
+    for individuo in sopa:
+        while i.size(individuo) > g.numnos(g): 
+                  
+            s=random.uniform(2,g.numnos(g)/2)  #novo len do caminho que é escolhido aleatoriamente entre 2 e metade do desejado  
+                      
+            ind1=i.novoind()
+            ind1=i.novocaminho(ind1,i.caminho(individuo)[:s])
+            ind1=i.novapos(ind1,pos=[float("{:.8f}".format(random.uniform(0,1))), float("{:.8f}".format(random.uniform(0,1))), float("{:.8f}".format(random.uniform(0,1)))])
+            ind1=i.novoID(ind1,sp.nID(ind1,sopa))
+            sopa.add(ind1)
+            
+            ind2=i.novoind()
+            ind2=i.novocaminho(ind2,i.caminho(individuo)[s:])
+            ind2=i.novapos(ind2,pos=[float("{:.8f}".format(random.uniform(0,1))), float("{:.8f}".format(random.uniform(0,1))), float("{:.8f}".format(random.uniform(0,1)))])
+            ind2=i.novoID(ind2,sp.nID(ind2,sopa))
+            sopa.add(ind2)
+            
+            sopa.remove(individuo)
+            
+    return sopa
+        
+            
         
 
 
