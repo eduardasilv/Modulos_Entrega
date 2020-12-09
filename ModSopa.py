@@ -7,7 +7,7 @@ import ModGrafos as gr
 import ModInd as i
 
 def exprandom(m):
-    x=random()
+    x=random.uniform(0,1)
     return -m*log(x)
 
 
