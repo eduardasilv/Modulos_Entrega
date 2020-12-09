@@ -26,9 +26,14 @@ def sim(g,o,d,k,limite,tbc,tbd,tbz):
             #ind3 = con(ind1,ind2,sopa)
             sopa = removeS(ind1,sopa)
             sopa = removeS(ind2,sopa)
+            sopa = addS(ind3,sopa)
             c = addE(c,event(ct+exprandom(tbc),"con",ID(ind3)))
-            c = addE(c,event(ct+exprandom(tbd),"des",ID(ind3)))
-
+            c = addE(c,event(ct+exprandom(tbd),"des",ID(ind3)))    # tbd???
+            # eliminar da cap os eventos previstos 
+            for evt in c:
+                if IDe(evt)==ID(ind1) or IDe(evt)==ID(ind2):
+                    c = removeE(c,evt)
+            
         elif ck == "des":
             "Modulo deslocamento"
             c=addE(c,event(ct+random(tbc),"des",cid))
