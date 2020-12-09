@@ -2,6 +2,11 @@
 import random
 import ModInd as i
 import ModSopa as sp
+
+def exprandom(m):
+    x=random()
+    return -m*log(x)
+
 def con(ind1,sopa): 
     #ind 2 é um aleatorio dos "cincoprox (ind1,sopa)" 
     ind2=random.choice(sp.cincoprox(ind1,sopa))
