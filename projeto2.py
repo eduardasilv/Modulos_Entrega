@@ -20,6 +20,7 @@ def sim(g,o,d,k,limite,tbc,tbd,tbz):
                 if ID(individuo)==cid:
                     ind1=individuo
             "Modulo concatenacao"
+            #ind3 = con(ind1,sopa)
             sopa = removeS(ind1,sopa)
             sopa = removeS(ind2,sopa)
             c = addE(c,event(ct+exprandom(tbc),"con",ID(ind3)))
