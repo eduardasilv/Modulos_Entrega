@@ -19,8 +19,11 @@ def sim(g,o,d,k,limite,tbc,tbd,tbz):
             for individuo in sopa:
                 if ID(individuo)==cid:
                     ind1=individuo
+            #ind 2 é um aleatorio dos "cincoprox (ind1,sopa)" 
+            ind2=random.choice(sp.cincoprox(ind1,sopa))
+    
             "Modulo concatenacao"
-            #ind3 = con(ind1,sopa)
+            #ind3 = con(ind1,ind2,sopa)
             sopa = removeS(ind1,sopa)
             sopa = removeS(ind2,sopa)
             c = addE(c,event(ct+exprandom(tbc),"con",ID(ind3)))
