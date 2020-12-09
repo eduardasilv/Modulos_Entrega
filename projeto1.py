@@ -101,7 +101,7 @@ def last(ind):
 #SOPA
 
 def exprandom(m):
-    x=random()
+    x=random.uniform(0,1)
     return -m*log(x)
 
 
@@ -229,10 +229,8 @@ def delE(cap):     # elimina da cap o current event no fim do ciclo
 
 ### EVENTOS:: concatenação,deslocação, cisão ("con", "des", "cis")
 
-def con(ind1,sopa): 
+def con(ind1,ind2,sopa): 
     #ind 2 é um aleatorio dos "cincoprox (ind1,sopa)" 
-    ind2=random.choice(sp.cincoprox(ind1,sopa))
-    
     ind3=i.novoind()
     ind3=i.novocaminho(ind3,i.caminho(ind1)[:-1]+i.caminho(ind2))
     ind3=i.novapos(ind3,[(i.posicao(ind1)[0]+i.posicao(ind2)[0])/2 , (i.posicao(ind1)[1]+i.posicao(ind2)[1])/2 , (i.posicao(ind1)[2]+i.posicao(ind2)[2])/2 ])
