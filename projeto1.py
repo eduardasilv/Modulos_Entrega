@@ -263,7 +263,7 @@ def cisao(sopa,g):
     for individuo in sopa:
         while i.size(individuo) > g.numnos(g): 
                   
-            s=random.uniform(2,g.numnos(g)/2)  #novo len do caminho que é escolhido aleatoriamente entre 2 e metade do desejado  
+            s=int(random.uniform(2,g.numnos(g)/2))  #novo len do caminho que é escolhido aleatoriamente entre 2 e metade do desejado  
                       
             ind1=i.novoind()
             ind1=i.novocaminho(ind1,i.caminho(individuo)[:s])
