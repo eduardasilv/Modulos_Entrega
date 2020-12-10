@@ -12,9 +12,9 @@ def sim(g,o,d,k,limite,tbc,tbd,tbz):
  
     c=[]
     for x in sp.conjIDS(sopa):
-        c = cap.addE(c,[ev.event(exprandom(tbc),"con",x)])
-        c = cap.addE(c,[ev.event(exprandom(tbd),"des",x)])
-    c = cap.addE(c,[ev.event(exprandom(tbz),"cis",0)])
+        c = cap.addE(c,[ev.event(sp.exprandom(tbc),"con",x)])
+        c = cap.addE(c,[ev.event(sp.exprandom(tbd),"des",x)])
+    c = cap.addE(c,[ev.event(sp.exprandom(tbz),"cis",0)])
 
     ce = cap.nextE(c)    #current event
     ct = ev.time(ce)  #current time = agora
@@ -34,8 +34,8 @@ def sim(g,o,d,k,limite,tbc,tbd,tbz):
             sopa = sp.removeS(ind1,sopa)
             sopa = sp.removeS(ind2,sopa)
             sopa = sp.addS(ind3,sopa)
-            c = cap.addE(c,ev.event(ct+exprandom(tbc),"con",i.ID(ind3)))
-            c = cap.addE(c,ev.event(ct+exprandom(tbd),"des",i.ID(ind3)))
+            c = cap.addE(c,ev.event(ct+sp.exprandom(tbc),"con",i.ID(ind3)))
+            c = cap.addE(c,ev.event(ct+sp.exprandom(tbd),"des",i.ID(ind3)))
             # eliminar da cap os eventos previstos 
             for evt in c:
                 if ev.IDe(evt)==i.ID(ind1) or ev.IDe(evt)==i.ID(ind2):
@@ -43,10 +43,10 @@ def sim(g,o,d,k,limite,tbc,tbd,tbz):
             
         elif ck == "des":
             "Modulo deslocamento"
-            c= cap.addE(c,ev.event(ct+random(tbc),"des",cid))
+            c= cap.addE(c,ev.event(ct+sp.exprandom(tbc),"des",cid))
         else:
             "Modulo cisão"
-            c= cap.addE(c,ev.event(ct+random(tbz),"cis",0))
+            c= cap.addE(c,ev.event(ct+sp.exprandom(tbz),"cis",0))
 
         ce = cap.nextE(c)
         ct = ev.time(ce)
