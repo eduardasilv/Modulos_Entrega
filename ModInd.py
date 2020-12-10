@@ -1,5 +1,4 @@
 ### INDIVIDUOS
-#    individuo = [caminho, pos]
 #    pos=[x,y,z]
 #    caminho=[lista de nos por onde passa]
 #    comprimento de individuo = len(individuo[0])
