@@ -31,5 +31,5 @@ def final(sopa,g,o,d):
     r=[]
     for individuo in sopa:
         if hamilton(individuo,g,o,d):
-            r+=[[i.caminho(individuo)]]
+            r+=[i.caminho(individuo)]
     return r
