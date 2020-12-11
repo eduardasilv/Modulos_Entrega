@@ -1,4 +1,11 @@
 ##GRAFOS
+def newgraph(wnos):
+    return [[wnos],[]]
+
+def jaresta(g,i,j):
+    [wnos,w]=g
+    w=w+[(i,j)]
+    return [wnos,w]
 
 def nos(g):
     return g[0]
