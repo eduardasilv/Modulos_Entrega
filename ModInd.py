@@ -3,20 +3,9 @@
 #    caminho=[lista de nos por onde passa]
 #    comprimento de individuo = len(individuo[0])
 
+
 def ind(caminho, pos,ID):
     return [caminho, pos, ID]
-
-def caminho(ind):
-    return ind[0] # = len(caminho(ind))
-
-def posicao(ind):
-    return ind[1]
-
-def ID(ind):
-    return ind[2]
-
-def size(ind):
-    return len(ind[0])
 
 def novoind():
     return[[],[],[]]
@@ -33,9 +22,20 @@ def novoID(ind,ID):
     ind[2]=ID
     return ind
 
+def caminho(ind):
+    return ind[0] # = len(caminho(ind))
+
+def posicao(ind):
+    return ind[1]
+
+def ID(ind):
+    return ind[2]
+
+def size(ind):
+    return len(ind[0])
+
 def first(ind):
     return caminho(ind)[0]
 
 def last(ind):
     return caminho(ind)[-1]
-
