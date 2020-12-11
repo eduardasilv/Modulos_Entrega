@@ -6,10 +6,15 @@ from math import inf
 import ModGrafos as gr
 import ModInd as i
 
+
+#########################
 def exprandom(m):
     x=random.uniform(0,1)
     return -m*log(x)
+########################
 
+def newsopa(windividuos):  #lista de individuos 
+    return [windividuos]
 
 def posInicial(g,k): #equivale as condicoes da sopa inicialmente
     r = gr.copias(g,k)
