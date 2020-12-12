@@ -32,7 +32,7 @@ def ID(ind):
     return ind[2]
 
 def size(ind):
-    return len(ind[0])
+    return len(caminho(ind))
 
 def first(ind):
     return caminho(ind)[0]
