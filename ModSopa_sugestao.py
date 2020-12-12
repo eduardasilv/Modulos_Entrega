@@ -8,7 +8,6 @@ def addS(ind,sopa):
     return sopa
 
 def removeS(ind,sopa):
-   
     return [x for x in sopa if x!=ind]
 
 def conjposicoes(sopa): #lista de todas as coordenadas utilizadas ate agora
