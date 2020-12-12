@@ -1,4 +1,7 @@
 #SOPA
+import random
+import ModGrafos as gr
+import ModInd as i
 
 def newsp():
     return []
