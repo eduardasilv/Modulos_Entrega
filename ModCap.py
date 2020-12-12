@@ -1,7 +1,8 @@
 ## CAP
+import ModEvents as ev
 
 def addE(c,e):
-    return [x for x in c if time(x)<time(e)] + [e] + [x for x in c if time(x)>time(e)]
+    return [x for x in c if ev.time(x)<ev.time(e)] + [e] + [x for x in c if ev.time(x)>ev.time(e)]
 
 def removeE(c,e):
     return [x for x in c if x!=e]
