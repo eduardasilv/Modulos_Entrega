@@ -28,17 +28,3 @@ def conjIDS(sopa):
 def nID(sopa):
     return conjIDS(sopa)[-1]+1
 
-def posInicial(g,k): #equivale as condicoes da sopa inicialmente.  #???? nao sei 
-   
-    r = gr.copias(g,k)
-    sopa=[]
-
-    for copia in r:
-        a=i.novoind()
-        a=i.novocaminho(a,i.caminho(copia))
-        a=i.novoID(a,i.ID(copia))
-        pos=[float("{:.8f}".format(random.uniform(0,1))), float("{:.8f}".format(random.uniform(0,1))), float("{:.8f}".format(random.uniform(0,1)))]
-        a=i.novapos(a,pos)
-        sopa=sopa+[a]
-
-    return sopa
