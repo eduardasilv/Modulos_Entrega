@@ -97,15 +97,13 @@ def cisao(sopa,g):
                       
             ind1=i.novoind()
             ind1=i.novocaminho(ind1,i.caminho(individuo)[:s+1])
-            ind1=i.novapos(ind1,pos=[float("{:.8f}".format(random.uniform(0,1))), float("{:.8f}".format(random.uniform(0,1))), float("{:.8f}".format(random.uniform(0,1)))])
-            #ind1=i.novapos(ind1,[float("{:.8f}".format(random.uniform(0,1))), float("{:.8f}".format(random.uniform(0,1))), float("{:.8f}".format(random.uniform(0,1)))])
+            ind1=i.novapos(ind1,[float("{:.8f}".format(random.uniform(0,1))), float("{:.8f}".format(random.uniform(0,1))), float("{:.8f}".format(random.uniform(0,1)))])
             ind1=i.novoID(ind1,sp.nID(ind1,sopa))
             sopa = sp.addS(ind1,sopa)
             
             ind2=i.novoind()
             ind2=i.novocaminho(ind2,i.caminho(individuo)[s:])
-            ind2=i.novapos(ind2,pos=[float("{:.8f}".format(random.uniform(0,1))), float("{:.8f}".format(random.uniform(0,1))), float("{:.8f}".format(random.uniform(0,1)))])
-            #ind2=i.novapos(ind2,[float("{:.8f}".format(random.uniform(0,1))), float("{:.8f}".format(random.uniform(0,1))), float("{:.8f}".format(random.uniform(0,1)))])
+            ind2=i.novapos(ind2,[float("{:.8f}".format(random.uniform(0,1))), float("{:.8f}".format(random.uniform(0,1))), float("{:.8f}".format(random.uniform(0,1)))])
             ind2=i.novoID(ind2,sp.nID(ind2,sopa))
             sopa = sp.addS(ind2,sopa)
             
