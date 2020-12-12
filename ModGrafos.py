@@ -1,11 +1,16 @@
 ##GRAFOS
 def newgraph(wnos):
-    return [[wnos],[]]
+    return [wnos,[]]
 
 def jaresta(g,i,j):
-    [wnos,w]=g
-    w=w+[(i,j)]
-    return [wnos,w]
+    [wnos,arestas]=g
+    arestas=arestas+[[i,j]]
+    return [wnos,arestas]
+
+def delaresta(g,i,j):
+    [wnos,arestas]=g
+    arestas.remove([i,j])
+    return [wnos,arestas]
 
 def nos(g):
     return g[0]
