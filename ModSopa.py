@@ -51,6 +51,8 @@ def addS(ind,sopa):
 
 def removeS(ind,sopa):
     return [x for x in sopa if x!=ind]
+
+"Apagar o resto, já está no módulo dos eventos"
     
 def distancia(ind1,ind2):
     [x1,y1,z1] = i.posicao(ind1)
