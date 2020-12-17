@@ -107,7 +107,7 @@ def cisao(sopa,g):
                 s=int(random.uniform(1,(gr.numnos(g)/2)-1)) #como adicionamos um no , tem de se tirar aqui
                 
                 while i.size(individuo)-s < 2:    
-                    s=int(random.uniform(2,g.numnos(g)/2))  #novo len do caminho que é escolhido aleatoriamente entre 2 e metade do desejado  
+                    s=int(random.uniform(1,(gr.numnos(g)/2)-1))   #novo len do caminho que é escolhido aleatoriamente entre 2 e metade do desejado, com -1 porque adicionamos a seguir
                       
                 ind1=i.novoind()
                 ind1=i.novocaminho(ind1,i.caminho(individuo)[:s+1])
