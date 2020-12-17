@@ -1,13 +1,17 @@
+import random
+from numpy import sqrt
+from numpy import log
+from numpy import inf
 import ModGrafos as gr
 import ModSopa as sp
 import ModInd as i
-import ModEvents as e
 
-## falta atualizar prefixos
+
+
 
 def copias(g,k): #cada elemento de "copias" é um individuo inicial
     r=[]
-    for x in arestas(g):
+    for x in gr.arestas(g):
         r+=[x]*k
     for j in range(len(r)):
         r[j]= [r[j],[], j+1]
@@ -95,29 +99,40 @@ def des(ind):
     return ind
 
 def cisao(sopa,g):
-    
-    for individuo in sopa:
-        
-        if i.size(individuo) > g.numnos(g):
-            
-            s=int(random.uniform(2,g.numnos(g)/2))
-            while i.size(individuo)-s < 2:    
-                s=int(random.uniform(2,g.numnos(g)/2))  #novo len do caminho que é escolhido aleatoriamente entre 2 e metade do desejado  
+
+    while not allok(sopa,g):
+        for individuo in sopa:    
+                
+            if i.size(individuo) > gr.numnos(g):
+                s=int(random.uniform(1,(gr.numnos(g)/2)-1)) #como adicionamos um no , tem de se tirar aqui
+                
+                while i.size(individuo)-s < 2:    
+                    s=int(random.uniform(2,g.numnos(g)/2))  #novo len do caminho que é escolhido aleatoriamente entre 2 e metade do desejado  
                       
-            ind1=i.novoind()
-            ind1=i.novocaminho(ind1,i.caminho(individuo)[:s+1])
-            ind1=i.novapos(ind1,[float("{:.8f}".format(random.uniform(0,1))), float("{:.8f}".format(random.uniform(0,1))), float("{:.8f}".format(random.uniform(0,1)))])
-            ind1=i.novoID(ind1,sp.nID(ind1,sopa))
-            sopa = sp.addS(ind1,sopa)
+                ind1=i.novoind()
+                ind1=i.novocaminho(ind1,i.caminho(individuo)[:s+1])
+                ind1=i.novapos(ind1,[float("{:.8f}".format(random.uniform(0,1))), float("{:.8f}".format(random.uniform(0,1))), float("{:.8f}".format(random.uniform(0,1)))])
+                ind1=i.novoID(ind1,sp.nID(sopa))
+                sopa = sp.addS(ind1,sopa)
+        
+                ind2=i.novoind()
+                ind2=i.novocaminho(ind2,i.caminho(individuo)[s:])
+                ind2=i.novapos(ind2,[float("{:.8f}".format(random.uniform(0,1))), float("{:.8f}".format(random.uniform(0,1))), float("{:.8f}".format(random.uniform(0,1)))])
+                ind2=i.novoID(ind2,sp.nID(sopa))
+                sopa = sp.addS(ind2,sopa)
             
-            ind2=i.novoind()
-            ind2=i.novocaminho(ind2,i.caminho(individuo)[s:])
-            ind2=i.novapos(ind2,[float("{:.8f}".format(random.uniform(0,1))), float("{:.8f}".format(random.uniform(0,1))), float("{:.8f}".format(random.uniform(0,1)))])
-            ind2=i.novoID(ind2,sp.nID(ind2,sopa))
-            sopa = sp.addS(ind2,sopa)
-            
-            sopa = sp.removeS(individuo,sopa)
+                sopa = sp.removeS(individuo,sopa)
        
     return sopa
+
+def allok(sopa,g):
+    ok=True
+    for individuo in sopa:
+        if i.size(individuo) > gr.numnos(g):
+            ok=False
+    return ok
+    
+ 
+
         
  
