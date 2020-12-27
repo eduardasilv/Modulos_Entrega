@@ -71,7 +71,7 @@ def con(ind1,ind2,sopa):
     ind3=i.novoID(ind3,sp.nID(sopa))
     return ind3
 
-def des(ind):
+def des(sopa,ind):
 
     x=i.posicao(ind)[0]
     y=i.posicao(ind)[1]
@@ -90,7 +90,8 @@ def des(ind):
         novoz=float("{:.8f}".format(random.uniform(z-(1/c), z+(1/c))))
     pos=[novox,novoy,novoz]        
     ind=i.novapos(ind,pos)
-    return ind
+    return sopa
+
 
 def cisao(sopa,g):
 
