@@ -9,17 +9,11 @@ import ModInd as i
 
 
 
-def copias(g,k): #cada elemento de "copias" é um individuo inicial
-    r=[]
-    for x in gr.arestas(g):
-        r+=[x]*k
-    for j in range(len(r)):
-        r[j]= [r[j],[], j+1]
-    return r
+
 
 def cond_iniciais(g,k): #equivale as condicoes da sopa inicialmente.  
    
-    r = copias(g,k)
+    r = gr.copias(g,k)
     sopa=[]
 
     for copia in r:
