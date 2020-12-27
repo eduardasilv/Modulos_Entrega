@@ -54,6 +54,14 @@ def sim(g,o,d,k,limite,tbc,tbd,tbz):
             c= cap.addE(c,ev.event(ct+op.exprandom(tbc),"des",cid))
         else:
             "Modulo cisão"
+            op.cisao(sopa,g)
+            for evt in c:
+                if ev.IDe(evt) not in sp.conjIDS(sopa):
+                    c = cap.removeE(c,evt)
+            for x in sp.conjIDS(sopa):
+                if x not in cap.conjIDcap(c):
+                    c = cap.addE(c,ev.event(ct+op.exprandom(tbc),"con",x))
+                    c = cap.addE(c,ev.event(ct+op.exprandom(tbd),"des",x))
             c= cap.addE(c,ev.event(ct+op.exprandom(tbz),"cis",0))
 
         ce = cap.nextE(c)
