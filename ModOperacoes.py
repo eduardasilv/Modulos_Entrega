@@ -68,7 +68,7 @@ def con(ind1,ind2,sopa):
     ind3=i.novoind()
     ind3=i.novocaminho(ind3,i.caminho(ind1)[:-1]+i.caminho(ind2))
     ind3=i.novapos(ind3,[(i.posicao(ind1)[0]+i.posicao(ind2)[0])/2 , (i.posicao(ind1)[1]+i.posicao(ind2)[1])/2 , (i.posicao(ind1)[2]+i.posicao(ind2)[2])/2 ])
-    ind3=i.novoID(ind3,i.nID(sopa))
+    ind3=i.novoID(ind3,sp.nID(sopa))
     return ind3
 
 def des(ind):
