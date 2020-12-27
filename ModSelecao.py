@@ -33,3 +33,9 @@ def final(sopa,g,o,d):
         if hamilton(individuo,g,o,d):
             r+=[i.caminho(individuo)]
     return r
+def res(sopa,g,o,d):
+    res=[]
+    for x in final(sopa,g,o,d):
+        if x not in res:
+            res=res+[x]
+    return res
