@@ -1,7 +1,7 @@
 import random
 import ModInd as i
 import ModSopa as sp
-import ModEvent as ev
+import ModEvents as ev
 import ModGrafos as gr
 import ModSelecao as sel
 import ModCap as cap
