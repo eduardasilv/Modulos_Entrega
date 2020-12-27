@@ -14,9 +14,9 @@ def sim(g,o,d,k,limite,tbc,tbd,tbz):
  
     c=[]
     for x in sp.conjIDS(sopa):
-        c = cap.addE(c,[ev.event(op.exprandom(tbc),"con",x)])
-        c = cap.addE(c,[ev.event(op.exprandom(tbd),"des",x)])
-    c = cap.addE(c,[ev.event(op.exprandom(tbz),"cis",0)])
+        c = cap.addE(c,ev.event(op.exprandom(tbc),"con",x))
+        c = cap.addE(c,ev.event(op.exprandom(tbd),"des",x))
+    c = cap.addE(c,ev.event(op.exprandom(tbz),"cis",0))
 
     ce = cap.nextE(c)    #current event
     ct = ev.time(ce)  #current time = agora
