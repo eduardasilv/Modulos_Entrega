@@ -18,7 +18,7 @@ def sim(g,o,d,k,limite,tbc,tbd,tbz):
         c = cap.addE(c,ev.event(op.exprandom(tbd),"des",x))
     c = cap.addE(c,ev.event(op.exprandom(tbz),"cis",0))
 
-    ce = cap.nextE(c)    #current event
+    ce = cap.nextE(c) #current event
     ct = ev.time(ce)  #current time = agora
     ck = ev.kind(ce)  #current kind
     cid = ev.IDe(ce)  #current IDe
@@ -27,24 +27,30 @@ def sim(g,o,d,k,limite,tbc,tbd,tbz):
 
         if ck == "con":
             for individuo in sopa:
-                if i.ID(individuo)==cid:
+                if i.ID(individuo)==cid and op.cincoprox(individuo,sopa)!=[]:
                     ind1=individuo
-            ind2=random.choice(op.cincoprox(ind1,sopa))
+                    ind2=random.choice(op.cincoprox(ind1,sopa))
     
-            "Modulo concatenacao"
-            ind3 = op.con(ind1,ind2,sopa)
-            sopa = sp.removeS(ind1,sopa)
-            sopa = sp.removeS(ind2,sopa)
-            sopa = sp.addS(ind3,sopa)
-            c = cap.addE(c,ev.event(ct+op.exprandom(tbc),"con",i.ID(ind3)))
-            c = cap.addE(c,ev.event(ct+op.exprandom(tbd),"des",i.ID(ind3)))
-            # eliminar da cap os eventos previstos 
-            for evt in c:
-                if ev.IDe(evt)==i.ID(ind1) or ev.IDe(evt)==i.ID(ind2):
-                    c = cap.removeE(c,evt)
+                    "Modulo concatenacao"
+                    ind3 = op.con(ind1,ind2,sopa)
+                    sopa = sp.removeS(ind1,sopa)
+                    sopa = sp.removeS(ind2,sopa)
+                    sopa = sp.addS(ind3,sopa)
+                    c = cap.addE(c,ev.event(ct+op.exprandom(tbc),"con",i.ID(ind3)))
+                    c = cap.addE(c,ev.event(ct+op.exprandom(tbd),"des",i.ID(ind3)))
+                    # eliminar da cap os eventos previstos 
+                    for evt in c:
+                        if ev.IDe(evt)==i.ID(ind1) or ev.IDe(evt)==i.ID(ind2):
+                            c = cap.removeE(c,evt)
             
         elif ck == "des":
             "Modulo deslocamento"
+            
+            for individuo in sopa:
+                if i.ID(individuo)==cid:
+                    ind1=individuo
+                    op.des(sopa,ind1)
+                      
             c= cap.addE(c,ev.event(ct+op.exprandom(tbc),"des",cid))
         else:
             "Modulo cisão"
@@ -55,3 +61,4 @@ def sim(g,o,d,k,limite,tbc,tbd,tbz):
         ck = ev.kind(ce)
         cid = ev.IDe(ce)
         c = cap.delE(c)
+    return sel.res(sopa,g,o,d)
