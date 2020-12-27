@@ -55,3 +55,5 @@ def sim(g,o,d,k,limite,tbc,tbd,tbz):
         ck = ev.kind(ce)
         cid = ev.IDe(ce)
         c = cap.delE(c)
+        
+    return sel.final(sopa,g,o,d)     
